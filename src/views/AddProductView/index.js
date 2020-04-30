@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 
 import './styles.css';
 
-export default function AddProductView() {
+export default function AddProductView(props) {
     const availableColors = [
         { id: "BLACK", text: "Preto" },
         { id: "WHITE", text: "Branco" },
         { id: "GOLD", text: "Dourado" },
         { id: "PINK", text: "Rosa" }
     ]
+
+    const editId = props.match.params.id;
     
     const [model, setModel] = useState("");
     const [brand, setBrand] = useState("");
@@ -18,6 +20,13 @@ export default function AddProductView() {
     const [price, setPrice] = useState(0);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+    const [editResult, setEditResult] = useState([]);
+
+    useEffect(() => {
+        if(editId) {
+            handleGetInfo();
+        }
+    }, [editId]);
 
     function dateParse(string) {
         var aux = string.split("-");
@@ -28,6 +37,58 @@ export default function AddProductView() {
         return aux.getDate() + "/" + (aux.getMonth() + 1) + "/" + aux.getFullYear();
     }
 
+    function dateParseInput(date) {
+        var aux = new Date(date);
+        return aux.getFullYear() + "-" + (aux.getMonth() + 1) + "-" + aux.getDate();
+    }
+
+    async function handleGetInfo() {
+        await axios.get("https://phones--melhorcom.repl.co/phone/"+editId, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'cpf': "06002912436"
+            }
+        }).then(response => {
+            setEditResult(response.data);
+            setModel(response.data.model);
+            setBrand(response.data.brand);
+            setColor(availableColors.find(color => color.id === response.data.color));
+            setPrice(response.data.price);
+            setStartDate(dateParseInput(response.data.date));
+            setEndDate(dateParseInput(response.data.endDate));
+        }).catch(error => {
+            alert("Erro!");
+        });
+    }
+
+    async function handleEdit(event) {
+        event.preventDefault();
+
+        await axios.patch("https://phones--melhorcom.repl.co/phone/" + editId, {
+            model,
+            brand,
+            price,
+            "date": dateParse(startDate),
+            "endDate": dateParse(endDate),
+            "color": color.id,
+            "code": editResult.code
+        }, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'cpf': "06002912436"
+            }
+        }).then(response => {
+            alert("Produto editado com sucesso!");
+            setTimeout(function () {
+                window.location.href = "http://localhost:3000/";
+            }, 1000);
+        }).catch(error => {
+            alert("Erro!");
+        });
+    }
+
     function handleSelect(event) {
         setColor(availableColors.find(color => color.id === event.target.value));
     }
@@ -35,7 +96,7 @@ export default function AddProductView() {
     async function handleSubmit(event) {
         event.preventDefault();
         
-        axios.post("https://phones--melhorcom.repl.co/phone", {
+        await axios.post("https://phones--melhorcom.repl.co/phone", {
             model,
             brand,
             price,
@@ -66,18 +127,16 @@ export default function AddProductView() {
         return result;
     }
 
-    
-
-
     return (
         <section>
             <div className="form-container">
                 <h2>Detalhes do produto</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={editId ? handleEdit :handleSubmit}>
                     <ul>
                         <li>
                             <label>Modelo</label>
-                            <input 
+                            <input
+                                value={editId ? model : ""}
                                 type="text"
                                 required pattern="[^\s]+"
                                 minLength="2"
@@ -88,6 +147,7 @@ export default function AddProductView() {
                         <li>
                             <label>Marca</label>
                             <input 
+                                value={editId ? brand : ""}
                                 type="text"
                                 required pattern="[^\s]+"
                                 minLength="2"
@@ -107,22 +167,33 @@ export default function AddProductView() {
                         </li>
                         <li>
                             <label>Preço</label>
-                            <input onChange={(e) => setPrice(e.target.value)} minLength="1" type="number" min="0" />
+                            <input 
+                                value={editId ? price : ""} 
+                                onChange={(e) => setPrice(e.target.value)} 
+                                minLength="1" 
+                                type="number" 
+                                min="0"
+                                step="0.01"
+                            />
                         </li>
                         <li>
                             <label>Inicio das vendas</label>
                             <input
+                                value={editId ? startDate : ""}
                                 onChange={(e) => setStartDate(e.target.value)}
                                 type="date"
                                 min="2019-01-01"
+                                required
                             />
                         </li>
                         <li>
                             <label>Fim das vendas</label>
                             <input
+                                value={editId ? endDate : ""}
                                 onChange={(e) => setEndDate(e.target.value)}
                                 type="date"
                                 min={startDate}
+                                required
                             />
                         </li>
                         <li>

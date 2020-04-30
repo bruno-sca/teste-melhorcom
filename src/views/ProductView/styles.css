@@ -56,12 +56,14 @@ section .product-container .table-container table {
     border-spacing: 0;
 }
 
-section .product-container .table-container table tr{
+section .product-container .table-container table tr {
     height: 64px;
 }
 
 section .product-container .table-container table th {
     text-align: start;
+    min-width: 100px;
+    width: 14%;
 }
 
 section .product-container .table-container table td {
@@ -72,4 +74,19 @@ section .product-container .table-container table th:first-child,td:first-child 
     padding-left: 43px;
 }
 
+section .product-container .table-container table td:last-child {
+    border-top: 1px solid #1D1D1D;
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 19px 32px;
+}
+
+section .product-container .table-container table td button {
+    margin: 0;
+    border: none;
+    background: transparent;
+}
 
