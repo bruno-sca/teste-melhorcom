@@ -14,6 +14,8 @@ export default function AddProductView(props) {
 
     const editId = props.match.params.id;
     
+    const [hovering, setHovering] = useState(false);
+    const [hovering1, setHovering1] = useState(false);
     const [model, setModel] = useState("");
     const [brand, setBrand] = useState("");
     const [color, setColor] = useState(availableColors[0]);
@@ -40,6 +42,10 @@ export default function AddProductView(props) {
     function dateParseInput(date) {
         var aux = new Date(date);
         return aux.getFullYear() + "-" + (aux.getMonth() + 1) + "-" + aux.getDate();
+    }
+
+    function handleBack() {
+        window.location.href = "http://localhost:3000/";
     }
 
     async function handleGetInfo() {
@@ -198,8 +204,18 @@ export default function AddProductView(props) {
                         </li>
                         <li>
                             <label>
-                                <Link to="/">VOLTAR</Link>
-                                <button type="submit">SALVAR</button>
+                                <button 
+                                    className={hovering ? "active" : ""}
+                                    onClick={() => handleBack}
+                                    onMouseEnter={() => setHovering(true)}
+                                    onMouseLeave={() => setHovering(false)}
+                                >VOLTAR</button>
+                                <button
+                                    className={hovering1 ? "active": ""}
+                                    onMouseEnter={() => setHovering1(true)}
+                                    onMouseLeave={() => setHovering1(false)}
+                                    type="submit"
+                                >SALVAR</button>
                             </label>
                         </li>
                     </ul>
