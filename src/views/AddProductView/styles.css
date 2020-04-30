@@ -1,0 +1,74 @@
+section .form-container {
+    width: 100%;
+    max-width: 690px;
+    padding: 24px 135px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+section .form-container h2 {
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+section .form-container form {
+    width: 100%;
+}
+
+section .form-container form ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 24px;
+}
+
+section .form-container form ul li {
+    text-align: start;
+    width: 198px;
+}
+
+section .form-container form ul li {
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 17px;
+}
+
+section .form-container form ul li select,input {
+    height: 40px;
+    width: 100%;
+    border: 1px solid #1D1D1D;
+    border-radius: 5px;
+    padding: 0 12px;
+    margin-top: 4px;
+    color: #1D1D1D;
+}
+
+section .form-container form ul li:last-child {
+    grid-column: 2;
+    margin-top: 40px;
+}
+
+section .form-container form ul li a {
+    display: inline-block;
+    margin-right: 24px;
+    background-color: #DAE3ED;
+    border: 1px solid #1D1D1D;
+    border-radius: 5px;
+    color: #1D1D1D;
+    padding: 8px 12px 8px 11px;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 500;
+    text-align: center;
+}
+
+section .form-container form ul li button{
+    width: 87px;
+    height: 33px;
+    background-color: #DAE3ED;
+    border: 1px solid #1D1D1D;
+    border-radius: 5px;
+    color: #1D1D1D;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+}

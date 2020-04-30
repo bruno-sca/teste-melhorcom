@@ -1,0 +1,75 @@
+section .product-container {
+    width: 100%;
+    max-width: 912px;
+    padding: 16px 24px 24px 24px;
+    margin: 40px 0;
+}
+
+section .product-container .table-header-container {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section .product-container .table-header-container h2 {
+    font-weight: 500;
+}
+
+section .product-container .table-header-container .button {
+    display: flex;
+    height: 40px;
+    width: 155px;
+    padding: 0 16px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #DAE3ED;
+    border: 1px solid #1D1D1D;
+    border-radius: 5px;
+    color: #1D1D1D;
+    transition: 0.2s;
+}
+
+section .product-container .table-header-container .button:hover {
+    color: #DAE3ED;
+    background-color: #1D1D1D;
+    transform: scale(1.1);
+}
+
+section .product-container .table-header-container .button .icon-container {
+    display: flex;
+    align-items: center;
+}
+
+section .product-container .table-container {
+    width: 100%;
+    margin-top: 12px;
+}
+
+section .product-container .table-container table {
+    width: 100%;
+    border: 1px solid #1D1D1D;
+    border-radius: 5px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+section .product-container .table-container table tr{
+    height: 64px;
+}
+
+section .product-container .table-container table th {
+    text-align: start;
+}
+
+section .product-container .table-container table td {
+    border-top: 1px solid #1D1D1D;
+}
+
+section .product-container .table-container table th:first-child,td:first-child {
+    padding-left: 43px;
+}
+
+

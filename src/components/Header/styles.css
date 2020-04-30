@@ -1,0 +1,22 @@
+header {
+    height: 87px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #054A91;
+    color: #DAE3ED;
+}
+
+header h1 {
+    font-family: Nunito;
+    font-weight: 700;
+    font-size: 56px;
+}
+
+header img {
+    height: 40px;
+    width: 26px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+}
