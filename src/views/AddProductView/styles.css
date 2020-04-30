@@ -32,8 +32,7 @@ section .form-container form ul li {
     margin-top: 17px;
 }
 
-section .form-container form ul li select,
-section .form-container form ul li input {
+section .form-container form ul li select,input {
     height: 40px;
     width: 100%;
     border: 1px solid #1D1D1D;
@@ -44,14 +43,25 @@ section .form-container form ul li input {
 }
 
 section .form-container form ul li:last-child {
-    width: 100%;
-    display: flex;
     grid-column: 2;
     margin-top: 40px;
-    justify-content: center;
 }
 
-section .form-container form ul li button {
+section .form-container form ul li a {
+    display: inline-block;
+    margin-right: 24px;
+    background-color: #DAE3ED;
+    border: 1px solid #1D1D1D;
+    border-radius: 5px;
+    color: #1D1D1D;
+    padding: 8px 12px 8px 11px;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 500;
+    text-align: center;
+}
+
+section .form-container form ul li button{
     width: 87px;
     height: 33px;
     background-color: #DAE3ED;
@@ -61,30 +71,4 @@ section .form-container form ul li button {
     font-size: 17px;
     font-weight: 500;
     text-align: center;
-    transition: 0.2s;
-}
-
-section .form-container form ul li button:first-child {
-    margin-right: 24px;
-}
-
-section .form-container form ul li button.active {
-    color: #DAE3ED;
-    background-color: #1D1D1D;
-    transform: scale(1.1);
-}
-
-@media only screen and (max-width: 767px) {
-    section .form-container form ul{
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-
-    section .form-container form ul li:last-child {
-        grid-column: 1;
-    }
-
-    section .form-container form ul li {
-        width: 100%;
-    }
 }

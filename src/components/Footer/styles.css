@@ -7,12 +7,4 @@ footer {
     background-color: #054A91;
     color: #DAE3ED;
     font-size: 12px;
-    padding: 0 100px;
-}
-
-
-@media only screen and (max-width: 767px) {
-    .deskonly {
-        display: none;
-    }
 }
