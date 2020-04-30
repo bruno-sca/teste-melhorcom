@@ -20,8 +20,8 @@ export default function AddProductView(props) {
     const [brand, setBrand] = useState("");
     const [color, setColor] = useState(availableColors[0]);
     const [price, setPrice] = useState(0);
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+    const [startDate, setStartDate] = useState("01-01-2019");
+    const [endDate, setEndDate] = useState("02-01-2019");
     const [editResult, setEditResult] = useState([]);
 
     useEffect(() => {
@@ -142,7 +142,7 @@ export default function AddProductView(props) {
                         <li>
                             <label>Modelo</label>
                             <input
-                                value={editId ? model : ""}
+                                value={model}
                                 type="text"
                                 required pattern="[^\s]+"
                                 minLength="2"
@@ -153,7 +153,7 @@ export default function AddProductView(props) {
                         <li>
                             <label>Marca</label>
                             <input 
-                                value={editId ? brand : ""}
+                                value={brand}
                                 type="text"
                                 required pattern="[^\s]+"
                                 minLength="2"
@@ -174,7 +174,7 @@ export default function AddProductView(props) {
                         <li>
                             <label>Preço</label>
                             <input 
-                                value={editId ? price : ""} 
+                                value={price}
                                 onChange={(e) => setPrice(e.target.value)} 
                                 minLength="1" 
                                 type="number" 
@@ -185,7 +185,7 @@ export default function AddProductView(props) {
                         <li>
                             <label>Inicio das vendas</label>
                             <input
-                                value={editId ? startDate : ""}
+                                value={startDate}
                                 onChange={(e) => setStartDate(e.target.value)}
                                 type="date"
                                 min="2019-01-01"
@@ -195,7 +195,7 @@ export default function AddProductView(props) {
                         <li>
                             <label>Fim das vendas</label>
                             <input
-                                value={editId ? endDate : ""}
+                                value={endDate}
                                 onChange={(e) => setEndDate(e.target.value)}
                                 type="date"
                                 min={startDate}
