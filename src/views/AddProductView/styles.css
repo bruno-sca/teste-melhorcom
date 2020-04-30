@@ -24,9 +24,6 @@ section .form-container form ul {
 section .form-container form ul li {
     text-align: start;
     width: 198px;
-}
-
-section .form-container form ul li {
     font-weight: 500;
     font-size: 14px;
     margin-top: 17px;

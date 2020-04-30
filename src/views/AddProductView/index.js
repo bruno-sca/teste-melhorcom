@@ -205,10 +205,12 @@ export default function AddProductView(props) {
                         <li>
                             <label>
                                 <button 
+                                    type="button"
                                     className={hovering ? "active" : ""}
-                                    onClick={() => handleBack}
+                                    onClick={handleBack}
                                     onMouseEnter={() => setHovering(true)}
                                     onMouseLeave={() => setHovering(false)}
+                                    formnovalidate
                                 >VOLTAR</button>
                                 <button
                                     className={hovering1 ? "active": ""}
